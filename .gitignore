@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Personal notes (if you want to keep them private)
+notes/
+scratch/
+
+# Test outputs
+test_output/
+*.test
+
+# Compiled code
+*.class
+*.jar
+*.exe
+.vs/leetcode-journey/FileContentIndex/ca82c709-3640-49fe-917a-dfa32cac5ab1.vsidx
+.vs/leetcode-journey/v17/.wsuo
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json

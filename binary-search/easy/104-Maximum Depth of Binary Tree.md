@@ -1,0 +1,121 @@
+# 1. Maximum Depth of Binary Tree
+
+**Difficulty**: Easy
+**LeetCode Link**: https://leetcode.com/problems/maximum-depth-of-binary-tree/?envType=study-plan-v2&envId=top-interview-150
+**Pattern**: 104. Maximum Depth of Binary Tree
+**Date Solved**: [To be filled when solved]
+
+---
+
+## Problem Statement
+
+Given the root of a binary tree, return its maximum depth.
+
+A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+**Example 1:**
+```
+
+Input: root = [3,9,20,null,null,15,7]
+Output: 3
+```
+
+**Example 2:**
+```
+Input: root = [1,null,2]
+Output: 2
+```
+
+
+**Constraints:**
+- The number of nodes in the tree is in the range [0, 104].
+- 100 <= Node.val <= 100
+
+---
+
+## Initial Thoughts
+
+We Have two way Breadth First Search (BFS) and Depth First Search (DFS) and we have three typ of DFS 
+- pre-order
+- in-order
+- post-order
+
+---
+
+## Approach 1: DFS
+
+### Intuition
+We will useing DFS
+
+### Algorithm
+
+
+### Complexity Analysis
+- **Time Complexity**: 
+- **Space Complexity**: 
+
+### Code
+```c#
+public int MaxDepth(Node root)
+{
+    if(root == null) return 0;
+    int leftDepth = MaxDepth(root.left); //1
+    int rightDepth = MaxDepth(root.right); //2
+    return Math.Max(leftDepth, rightDepth) + 1;
+}
+```
+
+## Approach 2: BFS
+
+### Intuition
+We will useing BFS
+
+
+**Key insight**: For each number `num`, we need `target - num`. If we've seen it before, we found our pair!
+
+### Algorithm
+1. Create an empty hash map `seen` to store {value: index}
+2. Iterate through the array with index `i` and value `num`
+3. Calculate `complement = target - num`
+4. If `complement` exists in `seen`, return `[seen[complement], i]`
+5. Otherwise, store `num` in `seen` with its index
+6. Continue to next element
+
+### Complexity Analysis
+- **Time Complexity**: O(n) - single pass through array, O(1) hash lookups
+- **Space Complexity**: O(n) - hash map stores up to n elements
+
+### Code
+```c#
+public int MaxDepth(Node root) 
+{
+    if (root == null) return 0;
+    Queue<Node> queue = new Queue<Node>();
+    queue.Enqueue(root);
+    int depth = 0;
+
+    while (queue.Count > 0) {
+        int size = queue.Count;
+        for (int i = 0; i < size; i++) {
+            Node node = queue.Dequeue();
+            if (node.left != null) queue.Enqueue(node.left);
+            if (node.right != null) queue.Enqueue(node.right);
+        }
+        depth++;
+    }
+    return depth;
+}
+```
+
+
+## Edge Cases & Testing
+
+### Edge Cases Considered
+
+
+### Test Cases
+
+```
+
+---
+
